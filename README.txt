@@ -1,12 +1,12 @@
-PERNI - MOTION FIELD v14
+PERNI - MOTION FIELD v15
 
 PUBLIC LINKS
 App: https://dperns44.github.io/perni-motion-field/
-Download: https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v14.zip
+Download: https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v15.zip
 Repository: https://github.com/dperns44/perni-motion-field
 
 RUN
-Unzip and open Salesforce Blue RAy MotionField v14.html in current Chrome or Edge.
+Unzip and open Salesforce Blue RAy MotionField v15.html in current Chrome or Edge.
 The original image tools work offline. No account or installation is needed.
 AI depth is optional: its first use downloads a roughly 27 MB model plus the
 browser engine. Internet is required for these dependencies; normal browser
@@ -140,7 +140,7 @@ Pinned model revision: 4472b7362082ad9968fee890ca0f1e5aca36b93d
 Runtime/model weights are downloaded by the browser, not bundled in this ZIP.
 
 VERSION
-Tool release v14; previous releases are preserved. Setup schema is 1.
+Tool release v15; previous releases are preserved. Setup schema is 1.
 Export shot/take version numbers are independent of the tool release.
 
 V13 PUBLICATION
@@ -155,7 +155,8 @@ Attractors pull toward their center. End paths at attractors, shown beside a
 selected attractor, controls arrival behavior globally; turning it off allows
 paths to continue and no longer disables attraction. Repellers bend paths away.
 These guides affect still-image Trails, Whole image and Traveling dots.
-Shimmer dots and live video/webcam tracking remain independent of these guides.
+Shimmer dots optionally follow attractors and repellers using the toggle in their tab.
+Live video/webcam tracking remains independent of these guides.
 Source areas emit Trails and Traveling dots; Whole image keeps distributed starts.
 The range fades smoothly at its edge; a zero range has no steering influence.
 Guides can bend across local contours, but existing brightness limits, image gaps,
@@ -171,3 +172,20 @@ zero-range waypoints, attractors and repellers recover their former 18% range.
 New explicit zero-range values remain zero when saved or undone.
 Disabling a soloed layer clears Solo. The active Solo and Show all layers control
 are visible above the preview on every tab. Startup shows a preparation message.
+
+V15 LIGHT STREAMS
+The Light streams slider now spans 1-128, matching its existing typed limit.
+The default stream count is unchanged. More streams require more route work.
+
+V15 SHIMMER GUIDES
+Shimmer dots > Follow attractors & repellers (off by default, image sources only).
+Attractors gather dots and repellers push them away. Uses each point's existing
+range and strength. Dots and shimmer trails share the same cached adjustment.
+This is a local deformation of the shimmer motion, not a persistent simulation:
+you can adjust it while paused. Existing Motion amount and Drift speed still apply.
+Sources and waypoints do not affect shimmer. Disable the toggle to restore its
+original placement/motion. Save/load, presets and Undo preserve the setting.
+Guide movement updates the cached field in the background; it does not rebuild
+all shimmer dots or search routes per animation frame. Tested with 20,000 dots.
+GPU/Canvas positions agree within 0.002 preview pixels in the focused test.
+Fresh MP4: 24 frames in 1 second, nominal and average frame rates both 24/1.
