@@ -1,12 +1,12 @@
-PERNI - MOTION FIELD v13
+PERNI - MOTION FIELD v14
 
 PUBLIC LINKS
 App: https://dperns44.github.io/perni-motion-field/
-Download: https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v13.zip
+Download: https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v14.zip
 Repository: https://github.com/dperns44/perni-motion-field
 
 RUN
-Unzip and open Salesforce Blue RAy MotionField v13.html in current Chrome or Edge.
+Unzip and open Salesforce Blue RAy MotionField v14.html in current Chrome or Edge.
 The original image tools work offline. No account or installation is needed.
 AI depth is optional: its first use downloads a roughly 27 MB model plus the
 browser engine. Internet is required for these dependencies; normal browser
@@ -140,8 +140,34 @@ Pinned model revision: 4472b7362082ad9968fee890ca0f1e5aca36b93d
 Runtime/model weights are downloaded by the browser, not bundled in this ZIP.
 
 VERSION
-Tool release v13; previous releases are preserved. Setup schema is 1.
+Tool release v14; previous releases are preserved. Setup schema is 1.
 Export shot/take version numbers are independent of the tool release.
 
 V13 PUBLICATION
 GitHub Pages release of the v12 tool. Rendering behavior is unchanged.
+
+V14 POINT STEERING
+Direct motion > add a Waypoint, Attractor or Repeller. Drag its center to move;
+drag its ring or edit Influence range to resize; adjust Influence for strength.
+Waypoints steer paths through their area, then release them. Nearby guides are
+chosen by influence, so a distant waypoint does not block another nearby one.
+Attractors pull toward their center. End paths at attractors, shown beside a
+selected attractor, controls arrival behavior globally; turning it off allows
+paths to continue and no longer disables attraction. Repellers bend paths away.
+These guides affect still-image Trails, Whole image and Traveling dots.
+Shimmer dots and live video/webcam tracking remain independent of these guides.
+Source areas emit Trails and Traveling dots; Whole image keeps distributed starts.
+The range fades smoothly at its edge; a zero range has no steering influence.
+Guides can bend across local contours, but existing brightness limits, image gaps,
+depth discontinuities and output masks still constrain the result. They do not
+guarantee arrival across disconnected detail. Large/high-strength guides can
+dominate the image flow: lower Influence or shrink their range for gentler motion.
+Tests: coherent contour attraction, waypoint pass-through, repulsion, range,
+strength, multiple guides, brightness/depth limits, GPU/Canvas, save/load,
+mobile layout, background worker parity, pointer drag and stale-result handling.
+Repellers now divert routes around a shaded clear center, including crossovers.
+Mouse-created guides start at 18% range, matching keyboard placement. Legacy
+zero-range waypoints, attractors and repellers recover their former 18% range.
+New explicit zero-range values remain zero when saved or undone.
+Disabling a soloed layer clears Solo. The active Solo and Show all layers control
+are visible above the preview on every tab. Startup shows a preparation message.
