@@ -1,20 +1,20 @@
-# Perni - Motion Field v15
+# Perni - Motion Field v16
 
-[Open the app](https://dperns44.github.io/perni-motion-field/) | [Download v15 ZIP](https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v15.zip)
+[Open the app](https://dperns44.github.io/perni-motion-field/) | [Download v16 ZIP](https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v16.zip)
 
-An artist-facing browser tool for image-guided trails, traveling dots, shimmer and motion-reference videos. Import an image, choose layers, direct paths, and render MP4 at 24 fps. Your source image stays fixed.
+An artist-facing browser tool for image-guided trails, traveling dots, shimmer and motion-reference videos. Your source image stays fixed. Export MP4 at 24 fps, or export spline geometry for Cinema 4D.
 
 ## Run
-Open the app link in Chrome or Edge, or unzip the download and open its HTML. No installation is needed for the image tools. Optional AI depth downloads its engine/model on first use and runs locally.
+Open the app in Chrome or Edge, or unzip and open the HTML. Image tools work offline. Optional AI depth downloads its engine/model on first use and runs locally.
 
-## v15
-Waypoints guide paths through an area; attractors pull paths inward; repellers bend them away. Drag guide rings to change range. End paths at attractors controls arrival behavior rather than disabling attraction. These guides affect still-image Trails, Whole image and Traveling dots; shimmer optionally follows attractors and repellers; live tracking is independent.
+## Cinema 4D
+Export > Cinema 4D > Animated light streams or Full paths > Export C4D splines. Uses the shot name, take version and seconds. The ZIP contains JSON, a Python importer and instructions. Run the importer in C4D Script Manager and choose the JSON. It creates a new scene with editable multi-segment splines and native 24 fps PLA animation. Save as .c4d; no plugin or external animation cache is needed.
+
+Enable Displace with depth map to add depth at export, independently of the Mapping mode. If needed, export creates a map while preserving your designed paths. Offline relief is also available. This is a 2.5D surface, not a full 3D reconstruction.
+
+Spline export includes enabled Trails and Whole image. Glow, fades, brightness masks, the image plate and dots remain separate from spline geometry. Live sources must be captured to a still first. Browser export, timing, depth preservation and package checks passed; the native C4D engine test is pending a command-line license assignment.
 
 ## Share a look
-Use Save setup to download JSON containing the still image, settings, depth map and guides. Teammates use Load setup. Video files and webcam footage are not embedded.
+Save setup includes the still image, settings, depth map and guides. Teammates use Load setup. Video files and webcam footage are not embedded.
 
-See [README.txt](README.txt) for controls, export details, dependencies, testing and limitations. Live motion tracking is experimental. Depth is relative 2.5D, not a full 3D reconstruction.
-
-The Light streams slider now supports 1-128 directly.
-
-Shimmer dots can follow attractors and repellers using the optional toggle at the top of their tab. It affects dots and their trails, with range and strength taken from the guide points.
+See [README.txt](README.txt) for controls, export instructions, dependencies and limitations. Live motion tracking is experimental.

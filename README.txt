@@ -1,12 +1,12 @@
-PERNI - MOTION FIELD v15
+PERNI - MOTION FIELD v16
 
 PUBLIC LINKS
 App: https://dperns44.github.io/perni-motion-field/
-Download: https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v15.zip
+Download: https://dperns44.github.io/perni-motion-field/Perni-Motion-Field-v16.zip
 Repository: https://github.com/dperns44/perni-motion-field
 
 RUN
-Unzip and open Salesforce Blue RAy MotionField v15.html in current Chrome or Edge.
+Unzip and open Salesforce Blue RAy MotionField v16.html in current Chrome or Edge.
 The original image tools work offline. No account or installation is needed.
 AI depth is optional: its first use downloads a roughly 27 MB model plus the
 browser engine. Internet is required for these dependencies; normal browser
@@ -140,7 +140,7 @@ Pinned model revision: 4472b7362082ad9968fee890ca0f1e5aca36b93d
 Runtime/model weights are downloaded by the browser, not bundled in this ZIP.
 
 VERSION
-Tool release v15; previous releases are preserved. Setup schema is 1.
+Tool release v16; previous releases are preserved. Setup schema is 1.
 Export shot/take version numbers are independent of the tool release.
 
 V13 PUBLICATION
@@ -189,3 +189,62 @@ Guide movement updates the cached field in the background; it does not rebuild
 all shimmer dots or search routes per animation frame. Tested with 20,000 dots.
 GPU/Canvas positions agree within 0.002 preview pixels in the focused test.
 Fresh MP4: 24 frames in 1 second, nominal and average frame rates both 24/1.
+
+V16 CINEMA 4D
+PERNI - MOTION FIELD v16 / CINEMA 4D SPLINES
+
+1. Extract this entire ZIP.
+2. In Cinema 4D open Script Manager (Shift+F11, or search for Script Manager).
+3. In Script Manager choose File > Open and select import-motion-field.py.
+4. Click Execute. Choose motion-field.json from this folder.
+5. A NEW scene opens at 24 fps. Existing scenes are left alone.
+6. Expand Perni Motion Field. There is one multi-segment spline per layer.
+7. Add a Sweep with a small Circle profile to render a spline. Add your own
+   material/glow. Static full paths can use C4D's Explode Segments workflow.
+8. Save the scene as .c4d. Animation is native PLA (point-level animation),
+   embedded in the scene. No Python tag, plugin or external cache is required.
+
+WHAT IS EXPORTED
+Enabled Trails and Whole image layers, regardless of Solo or Render view.
+Animated light streams: geometry grows/erases or moves along the extracted
+paths, using the existing timing, path crossovers, master speed and sources.
+One key per frame, starting at frame 0. A 12-second shot has frames 0..287.
+Scene and render frame rates are both 24 fps. Full paths is static geometry.
+Colors are viewport colors per layer, not a renderer-specific material.
+Coordinates are centered; +X right, +Y up, near pixels are negative Z.
+Default scene width is 1000 cm. Height matches the source aspect ratio.
+Optional depth uses the current relative depth map and its invert setting.
+It creates a 2.5D surface, not hidden surfaces or a closed 3D reconstruction.
+You do NOT need to work in Depth mapping mode. In Export, enable Displace with
+depth map. If no map exists, Export C4D splines creates one automatically before
+exporting. Create depth for export also prepares it separately. Both preserve
+your current Mapping mode and designed paths: depth only adds Z on export.
+The map is saved in your setup. It can later be used in Mapping if you choose.
+Create export relief is an offline fallback under Spline settings; it makes a
+stylized bulge, not AI depth. AI depth needs internet for its first model load.
+
+Spline settings allow 32 / 64 / 128 maximum points per path or original detail.
+64 is the default. Choose original for maximum contour fidelity.
+Large bakes are rejected with a message rather than silently dropping paths.
+Reduce Seconds, path count or detail; static export is much lighter.
+The importer validates the exchange data before creating a scene.
+
+LIMITS
+This is geometry, not a pixel-perfect reconstruction of the browser render.
+Opacity fades, illumination, glow, post-process brightness/paint masks,
+the image plate, traveling dots and shimmer dots are not exported as splines.
+Extended trails may fill the whole spline; their fading light needs a material
+in C4D. Invisible ranges collapse to zero-length segments. Wrapped tails use
+separate segments, so there is no line joining opposite ends of a path.
+Abrupt loop resets have linear interpolation between 24 fps samples; disable
+deformation motion blur on reset frames if it creates streaks.
+Live video/webcam: capture a still before exporting. No live tracking bake.
+The exchange JSON is data only and can be adapted to other 3D applications;
+this release includes a Cinema 4D importer, not an Alembic/FBX writer.
+
+Target: Cinema 4D 2024-2026 Python APIs. Run the importer inside Cinema 4D,
+not in a normal Python installation. If import fails, the error is displayed
+and your existing document is not modified.
+Validation: browser export, frame timing, ZIP integrity, mapping preservation,
+depth coordinates and importer Python syntax checked. Native C4D integration
+test is pending a command-line license assignment in Maxon App.
